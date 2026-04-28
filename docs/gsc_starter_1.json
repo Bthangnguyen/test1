@@ -1,0 +1,126 @@
+{
+  "83": {
+    "inputs": {
+      "ckpt_name": "dreamshaper_8.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "84": {
+    "inputs": {
+      "lora_name": "pony-pixel_art_xl_1_5_by_creativehotia.safetensors",
+      "strength_model": 0.7,
+      "strength_clip": 0.7,
+      "model": [
+        "83",
+        0
+      ],
+      "clip": [
+        "83",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA (Model and CLIP)"
+    }
+  },
+  "85": {
+    "inputs": {
+      "text": "pixel art,\nterraria style,\n2d side view,\ntile-based world,\ncolorful background,\nclassic game style,\nbright colors,\nsimple shading,\ngame asset,\nside scrolling,\nfantasy world,\nclean pixel edges,\nconsistent sprite style",
+      "clip": [
+        "84",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Positive"
+    }
+  },
+  "86": {
+    "inputs": {
+      "text": "realistic\n3d\nphotorealistic\nsmooth shading\nblurry\nhigh detail\nnoise\ngradient\ncinematic\ndepth of field",
+      "clip": [
+        "84",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Negative"
+    }
+  },
+  "87": {
+    "inputs": {
+      "width": 512,
+      "height": 320,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "88": {
+    "inputs": {
+      "seed": 8473923,
+      "steps": 24,
+      "cfg": 6,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "84",
+        0
+      ],
+      "positive": [
+        "85",
+        0
+      ],
+      "negative": [
+        "86",
+        0
+      ],
+      "latent_image": [
+        "87",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "89": {
+    "inputs": {
+      "samples": [
+        "88",
+        0
+      ],
+      "vae": [
+        "83",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "91": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "89",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  }
+}

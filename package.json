@@ -1,0 +1,36 @@
+{
+  "name": "test1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts MyVideo output.mp4",
+    "build": "remotion bundle src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@react-three/fiber": "^9.6.0",
+    "@remotion/cli": "^4.0.451",
+    "@remotion/lottie": "^4.0.451",
+    "@remotion/noise": "^4.0.451",
+    "@remotion/paths": "^4.0.451",
+    "@remotion/shapes": "^4.0.451",
+    "@remotion/three": "4.0.451",
+    "@types/three": "^0.184.0",
+    "gsap": "^3.15.0",
+    "lottie-web": "^5.13.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "remotion": "^4.0.451",
+    "three": "^0.184.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "typescript": "^5.8.3"
+  }
+}
