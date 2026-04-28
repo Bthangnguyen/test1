@@ -29,12 +29,23 @@ import { WaterMotion3D } from "./compositions/WaterMotion3D";
 import { TheCoreAwakening } from "./compositions/core-awakening/TheCoreAwakening";
 import { SolarSystem } from "./compositions/SolarSystem";
 import { SolarSystem3D } from "./compositions/solar3d/SolarSystem3D";
+import { BlueMarble } from "./compositions/BlueMarbel";
 import { FPS, WIDTH, HEIGHT, TOTAL_FRAMES } from "./config";
 import { GSAP_TOTAL } from "./gsapShowcaseConfig";
 
 export const Root: React.FC = () => {
   return (
     <>
+      {/* ═══ BLUE MARBLE — Photorealistic Earth ═══ */}
+      <Composition
+        id="BlueMarble"
+        component={BlueMarble}
+        durationInFrames={900}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
       {/* ═══ SOLAR SYSTEM 3D ═══ */}
       <Composition
         id="SolarSystem3D"
